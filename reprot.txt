@@ -1,0 +1,29 @@
+Assignment 2 
+Cady Liu 
+Lang C 
+System Debian 
+
+A short report on zombies 
+
+1. part1 
+	a. implementation details 
+		- file name: as2_pt1.c
+		- executable name: a.out
+		- details: 
+			the source file use fork() to create a child, then force the parents to sleep and terminate child before the parents can call wait(). In this manner, the child became a zombie. Later the parent wake up and called wait() to take care of the zombie.  all the ps was given manually through cmd line.  
+                     	
+	b. sample input/output 
+		- see attached ass1.1 and ass1.2 for screen shot 
+	c. comments 
+		- the the child and parents will print statement into stdout to indicate that they are at work. 
+		- ps -l will be given manually 
+
+2. part2 
+	a. implementation details 
+		- file name: as2_pt2.c
+		- executable name: run
+		- details: The source code of part2 use a fork() to copy itself then use a excel() to execute code from part1. It then sleep shortly to allow the child to run and turn into zombie before it call ps by involking system(). After that it fall into deep sleep until part1 finish execute and swipe out zombie child. Then it wake up and calls again ps via system() to demontrate that the child zombie is cleaned up. 
+	b. sample input/output 	
+		- check attahced ass2.1 and ass2.2 for 2 seperate runs 
+	c. comments 
+		- what different from assignment1 is that this part use system() and execl() to monitor the ps and execution. 
