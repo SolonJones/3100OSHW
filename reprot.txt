@@ -3,7 +3,8 @@ Cady Liu
 Lang C 
 System Debian 
 
-A short report on zombies 
+A 20781f11aa326f3375093c55edddc870a60da27e
+report on zombies 
 
 1. part1 
 	a. implementation details 
