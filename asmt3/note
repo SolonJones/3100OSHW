@@ -1,0 +1,3 @@
+to complie the thread .c one need to use 
+ gcc -pthread target.c 
+to incorperate special lib

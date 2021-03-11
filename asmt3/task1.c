@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<stdlib.h>
-
+#include<math.h>
+#include<pthread.h>
 
 /***gnereal description of probelm***
  * construct a square and a circle within the square 
@@ -19,32 +20,57 @@
 
 /* generate random # between 0~1 */
 double random_double(){
+	/* seed random() */
+	//srandom();	
 	return random() / ((double)RAND_MAX  + 1);
 }
 
+
+void generate_test(){
+
+
+}
 /* global var */
-int circle_count, total_count;
+int circle_count;
 
-int main(){
-	
-	/* seed random() */
-	srandom();	
 
+/* thread */
+void* thread(void *total_count ){
 	int x, y, hit_count; 
-
 	/* generate x y pairs, adjusted */ 
 	/* adjustment assume orig at left-low corner of square */
 	x = random_double() * 2.0 -1.0;
 	y = random_double() * 2.0 -1.0;
 	/* test if sqaure root of (x^2 + y^2) is within circle */
-	if(sqrt(x*x +y*y) < 1.0)
+	//if(sqrt(x*x +y*y) < 1.0)
 		++hit_count;	
 
-	printf(%s,%d ,%d, %s, %d, " the x y coordinate is ", x, y, " within the circle", hit_count);		
+}
 
-	/* calcualte pi by master thread */
-	{
+void* runner(void* param){
+	int value = atoi(param);
+	printf("successfully called runner with param = %d",value);
+	pthread_exit(0);
+}
+
+int main(){
+	/* read input from user for total_count*/
+	int total_count ;	
+	int ret = scanf("%d", &total_count);
+	printf("read %d, value %d", ret, total_count);
+	/* call thread with this toutal count */
 	
+	/*1. create thread*/ 
+	pthread_t tid ;
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_create(&tid, &attr, runner, (void*)(&total_count));
+	pthread_join(tid,NULL);
+	
+		
+	/* thread exit, master calcualte pi by useing total count and hit count */
+	{
+
 	}
 	return 0;
 }
