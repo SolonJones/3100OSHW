@@ -1,3 +1,7 @@
 to complie the thread .c one need to use 
  gcc -pthread target.c 
 to incorperate special lib
+
+to complie the sqrt one need to use 
+ gcc .... -lm 
+to incorperate special lib 
