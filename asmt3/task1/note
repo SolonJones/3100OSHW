@@ -5,3 +5,11 @@ to incorperate special lib
 to complie the sqrt one need to use 
  gcc .... -lm 
 to incorperate special lib 
+
+
+man will only default to check man -s 1 
+2 is systemc call 
+3 is lib call 
+8 system admin 
+or use man --usage for help 
+or man --help 
