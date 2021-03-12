@@ -2,11 +2,63 @@ Name Cady Liu
 ID 110027977
 ASMT assignment 3 
 
+"I confirm that I will keep the content of this assignement confidential. Icomfirm that i have not recieved any unauthorixed assistance in preparing for or wiring this assingment. I acknowledge that a mark of 0 may be assigned for copied work" 
+	- Cadu Liu  110027977
+
+
+---------------
 Report for Task1
 
+Section 1: implementation
+  The complete source code can be viewed in "task1.c". There below describe
+in genereal the code structure. 
+
+  The code main() section divided into 3 parts, the first part call timeval() from sys/time.h to records starting time andending time in micro-seconds. The second part call the slave-thread to generate all monto carlo method realted data. The third part caculate the pi. 
+  The thread is using pthread families from unistd.h  
+  All the rest of the pi calculation follows code from assignment instructions. 
+
+
+Section 2: technical details
+  The thread is runing the code section within void* runner(void* param){...}. The "hit_count" variable is a global variable recording all the p(x,y) which falls within the circle. 
+  Once this thread is done executing, the master process can resume and perform the pi calcualtion. Since the total_count number is read from the command line argument and is known to the master, only drwan down the global variable hit_count can complete the calculation. 
+
+
+Section3: input/output 
+  The detailed input instruction can view README.md for manual execution. The batch input instruction can view the shell script exe.sh. 
+  The output can be viewed in the log_taskX.txt ( where X is either 1 or 2)Every new execution of exe.sh will append newly minted result at the back of the log file for review. 
+
+Section4: comments
   By view the log_task1.txt file, one can see that the estimation of pi approaching to 3.1415926 with the increase of num_of_points. Yet some "jump" in the result is still visiable.This is due to the random nature of the estimation. However, the runing time is steadly increase with the increase of num_of_points, which is also to be expected. 
+  For original data sets view log_task1.txt. 
 
 
+
+
+-----------------
 Report for Task2 
   
+
+Section 1: implementation
+
+ The task2.c can be divied into 4 sections:
+	a. the first section handles the command line arguments and convert them into appropriate data types. 
+	b. the second part call sys/time.h funtions timeval to records starting time and end times. 
+	c. the thrid part prepare a vectors for threads, who's number is determined by first section. The this also run them by pthread fucnitons family. 
+	d. the forth section calculate the pi with result from the third section. 
+  Code details and comments can be seen in the source file task2.c 
+
+
+Section 2: technical details
+	For problem related to race condition. 
+  Since task2 generate several thread to divide up the work, it is import to protect the global variable hit_count to only be accessed by one thread at a time. Using mutex method, the code use an other global variable "bool ava" to lock the cirtical section and only allow access after the acquire() call is granted. Otherwise the thread run into a busy waiting for its turn.  Also to reduce the need to change the local, use a hit_count_local varianle to store all the result from the thread and only update the global vaiable before the thread exit itself. 
+  The details related to release() and acquire() functions can be viewed in the source code comment section right above thoese fucntions. 
+
+Section3: input/output 
+
+  Like previous one, all automatic input can be viewed in exe.sh file and all instruction related to manual input can be viewed in README.md file. All outputs were stored in log_taskX.txt file for re-examinations. 
+
+
+Section4: comments
+
   The log_task2.txt reveal more interesting result. First the pi seemed to be rather the same with the increase of the thread number. This is to be expected because the total simulation number remian the same. The time however, is not decrease with the increase of thread number. It actually increased, which means the more thread the slower the ps. This is due to the context swithching and mutex wait wasted cpu time and slow down the final execution. Some program make extraordinarily long to complete. This may due to the spinlock make cpu schduler think its waiting for IO and choose to put it on the back of the queue, causing it to wait longer. 
+

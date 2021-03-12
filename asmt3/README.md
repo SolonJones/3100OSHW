@@ -15,3 +15,6 @@ if the exe.sh failed to complie
 	./a.out 1000000 20 
 	./a.out 1000000 40 
 	...etc... 
+
+
+0. All the debug code is in the dir named backup which should not be concerned by the graders. 
