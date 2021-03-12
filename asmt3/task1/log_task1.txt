@@ -1,0 +1,4 @@
+pi=3.080000	num_of_points=100	time=384 micro_secs
+pi=3.164000	num_of_points=1000	time=379 micro_secs
+pi=3.155600	num_of_points=10000	time=1042 micro_secs
+pi=3.144160	num_of_points=100000	time=10088 micro_secs

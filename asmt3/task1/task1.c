@@ -90,7 +90,7 @@ int main(int argc, char * argv[]){
 	gettimeofday(&ed,NULL);
 //	printf("end time %ld \n", ed);
 	unsigned long delta_t = ed.tv_usec -st.tv_usec;
-	printf("pi = %f with runing time %lu micro_secs \n",pi, delta_t);
+	printf("pi=%f\tnum_of_points=%d\ttime=%lu micro_secs\n",pi,total_count,delta_t);
 	}
 	return 0;
 }

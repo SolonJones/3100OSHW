@@ -120,7 +120,7 @@ int main(int argc, char * argv[]){
 		gettimeofday(&ed,NULL);
 		//	printf("end time %ld \n", ed);
 		unsigned long delta_t = ed.tv_usec -st.tv_usec;
-		printf("\n\tpi=%f\tthread_num=%d\truning time =%lu micro_secs\n\n\n",pi,thread_num, delta_t);
+		printf("\tpi=%f\tthread_num=%d\truning time =%lu micro_secs\n",pi,thread_num, delta_t);
 	}
 	return 0;
 }

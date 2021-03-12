@@ -1,0 +1,12 @@
+Name Cady Liu 
+ID 110027977
+ASMT assignment 3 
+
+Report for Task1
+
+  By view the log_task1.txt file, one can see that the estimation of pi approaching to 3.1415926 with the increase of num_of_points. Yet some "jump" in the result is still visiable.This is due to the random nature of the estimation. However, the runing time is steadly increase with the increase of num_of_points, which is also to be expected. 
+
+
+Report for Task2 
+  
+  The log_task2.txt reveal more interesting result. First the pi seemed to be rather the same with the increase of the thread number. This is to be expected because the total simulation number remian the same. The time however, is not decrease with the increase of thread number. It actually increased, which means the more thread the slower the ps. This is due to the context swithching and mutex wait wasted cpu time and slow down the final execution. Some program make extraordinarily long to complete. This may due to the spinlock make cpu schduler think its waiting for IO and choose to put it on the back of the queue, causing it to wait longer. 
