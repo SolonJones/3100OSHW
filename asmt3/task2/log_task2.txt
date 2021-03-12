@@ -14,3 +14,11 @@ Thu 11 Mar 2021 11:18:25 PM EST
 	pi=3.141980	thread_num=100	runing time =18446744073708628091 micro_secs
 
 
+Fri 12 Mar 2021 10:05:24 AM EST
+	pi=3.142244	thread_num=2	runing time =70986 micro_secs
+	pi=3.142244	thread_num=20	runing time =76709 micro_secs
+	pi=3.142244	thread_num=40	runing time =75239 micro_secs
+	pi=3.142244	thread_num=80	runing time =84507 micro_secs
+	pi=3.142244	thread_num=100	runing time =85789 micro_secs
+
+
